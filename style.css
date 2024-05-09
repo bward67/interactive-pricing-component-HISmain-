@@ -1,0 +1,301 @@
+:root {
+  --clr-soft-cyan-full-slider-bar: hsl(174, 77%, 80%);
+  --clr-strong-cyan-slider-background: hsl(174, 86%, 45%);
+  --clr-light-grayish-red-discount-background: hsl(14, 92%, 95%);
+  --clr-light-red-discount-text: hsl(15, 100%, 70%);
+  --clr-pale-blue-cta-text: hsl(226, 100%, 87%);
+
+  --clr-white-pricing-component-background: hsl(0, 0%, 100%);
+  --clr-very-pale-blue-main-background: hsl(230, 100%, 99%);
+  --clr-light-grayish-blue-empty-slider-bar: hsl(224, 65%, 95%);
+  --clr-light-grayish-blue-toggle-background: hsl(223, 50%, 87%);
+  --clr-grayish-blue-text: hsl(225, 20%, 60%);
+  --clr-dark-desaturate-blue-text-and-cta-background: hsl(227, 35%, 25%);
+
+  --fw-600: 600;
+  --fw-800: 800;
+}
+*,
+*::before,
+*::after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: var(--fw-600);
+  line-height: 1.7;
+  text-align: center;
+  color: var(--clr-grayish-blue-text);
+  display: grid;
+  place-items: center;
+  background-color: var(--clr-very-pale-blue-main-background);
+}
+main {
+  width: 100%;
+  background-image: url(images/bg-pattern.svg);
+  background-repeat: no-repeat;
+  background-size: 360%;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.bg-circles {
+  position: absolute;
+}
+.bg-circles {
+  top: 4rem;
+}
+
+.hero-content {
+  display: grid;
+  z-index: 2;
+  margin-top: 6rem;
+}
+h1 {
+  font-size: 1.3rem;
+  font-weight: var(--fw-800);
+  color: var(--clr-dark-desaturate-blue-text-and-cta-background);
+}
+h2 {
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 1.7px;
+}
+h3 {
+  font-size: 2rem;
+  font-weight: var(--fw-800);
+  margin-right: 1rem;
+  color: var(--clr-dark-desaturate-blue-text-and-cta-background);
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.main-section {
+  background-color: var(--clr-white-pricing-component-background);
+  padding-block: 2rem;
+  box-shadow: 1px 1px 5px rgba(127, 127, 127, 0.3);
+  display: grid;
+  justify-items: center;
+  z-index: 5;
+  margin-top: 4rem;
+  border-radius: 0.5rem;
+}
+.price-per-month-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.desktop.price-per-month-line {
+  display: none;
+}
+.top-section-desktop {
+  display: none;
+}
+.top-section-mobile {
+  text-align: center;
+}
+input#price-slider {
+  margin-block: 2.5rem;
+  width: 100%;
+  -webkit-appearance: none;
+  /*we remove the line and replace with the below*/
+  height: 0.6rem;
+  background: linear-gradient(
+    to right,
+    hsl(174, 77%, 80%) 0%,
+    hsl(174, 77%, 80%) 50%,
+    /*we will change this one in JS*/ hsl(224, 65%, 95%) 0%,
+    hsl(224, 65%, 95%) 100%
+  );
+  border-radius: 100px;
+}
+input#price-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  /*we remove the circle and replace with the below*/
+  height: 3rem;
+  width: 3rem;
+  background-color: var(--clr-strong-cyan-slider-background);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: 1px 1px 35px rgba(0, 255, 255, 1);
+  border: none;
+  background-image: url(images/icon-slider.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+input#price-slider:hover,
+input#price-slider::-webkit-slider-thumb:hover {
+  background-color: var(--clr-soft-cyan-full-slider-bar);
+  cursor: pointer;
+}
+
+.billing-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-block: 3rem;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: var(--fw-600);
+}
+/*we modify the input type checkbox*/
+.switch input {
+  opacity: 0;
+}
+.switch {
+  /*the label*/
+  display: inline-block;
+  width: 3.2rem;
+  height: 1.7rem;
+  position: relative;
+  border-radius: 25px;
+}
+.switch:hover {
+  background-color: var(--clr-strong-cyan-slider-background);
+}
+.toggle-slider {
+  /*the background part*/
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 25px;
+  background-color: var(--clr-light-grayish-blue-toggle-background);
+  transition: all 0.2s ease;
+}
+
+.toggle-slider::before {
+  /*the white circle inside the toggle bar*/
+  content: "";
+  position: absolute;
+  background-color: var(--clr-white-pricing-component-background);
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  top: 3px;
+  left: 5px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+.toggle-slider:hover {
+  background-color: var(--clr-strong-cyan-slider-background);
+}
+.switch input:checked + .toggle-slider:before {
+  transform: translateX(1.2rem);
+}
+
+.billing-discount {
+  background-color: var(--clr-light-grayish-red-discount-background);
+  color: var(--clr-light-red-discount-text);
+  border-radius: 100px;
+  padding: 0.1rem 0.5rem;
+}
+.discount {
+  display: none;
+}
+.bottom-section {
+  border-top: 1px solid var(--clr-light-grayish-blue-empty-slider-bar);
+  width: 100%;
+}
+.bottom-section-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-top: 2rem;
+}
+.bottom-section-content img {
+  width: 4%;
+  height: 100%;
+}
+.bottom-section-content:not(:first-child) {
+  padding: 0;
+}
+.start-btn {
+  padding: 0.8rem 1rem;
+  background-color: var(--clr-dark-desaturate-blue-text-and-cta-background);
+  color: var(--clr-pale-blue-cta-text);
+  border: none;
+  border-radius: 100px;
+  width: 60%;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+@media (min-width: 568px) {
+  main {
+    background-size: 95%;
+  }
+  .main-section {
+    margin-top: 6rem;
+    max-width: 500px;
+  }
+  .desktop-top-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .top-section-mobile .price-per-month-line {
+    display: none;
+  }
+  .desktop.price-per-month-line {
+    visibility: visible;
+    display: flex;
+  }
+
+  .top-section-desktop {
+    display: block;
+  }
+  .top-line-desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  br {
+    display: none;
+  }
+  .billing-discount {
+    display: flex;
+  }
+  .discount {
+    display: block;
+    margin-left: 0.2rem;
+  }
+  .minus {
+    display: none;
+  }
+  .bottom-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+  }
+
+  .bottom-section-content {
+    margin-bottom: 0.5rem;
+    justify-content: start;
+  }
+
+  .start-btn {
+    width: 40%;
+    margin-top: 2rem;
+  }
+}
